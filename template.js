@@ -20,7 +20,6 @@ function convertTemplate(value) {
             var filePath = path.parse(file.history[0])
             // console.log(filePath.name)
             let content = file.contents.toString().replace(/[\r\n]/g,'')
-            console.log(content)
             let template = `(function () {`+
                 `if (typeof $template == 'undefined') {$template = {}};`+
                 `$template['${filePath.name}'] = '${content}'}());`

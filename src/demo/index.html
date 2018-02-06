@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- build:framework -->
     <script src="../framework/vue.js"></script>
+    <!-- endbuild -->
+    <!-- build:css -->
     <link rel="stylesheet" href="styles/index.css">
+    <!-- endbuild -->
     <title>Document</title>
 </head>
 <body>
     <div id="app">
+        <h3>{{title}}</h3>
         <p>{{text}}</p>
         <hello></hello>
     </div>
-    <script src="js/template.js"></script>
+    <!-- build:template -->
+    <!-- endbuild -->
+    <!-- build:js -->
     <script src="js/index.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

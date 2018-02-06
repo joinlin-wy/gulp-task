@@ -4,11 +4,13 @@
   "description": "A develop environment with gulp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp --gulpfile gulpfile.dev.js",
+    "build": "gulp --gulpfile gulpfile.build.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joinlin-wy/gulp-task.git"
+    "url": "https://github.com/joinlin-wy/gulp-task.git"
   },
   "author": "joinlin",
   "license": "ISC",
@@ -22,6 +24,7 @@
     "express": "^4.16.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
     "gulp-htmlmin": "^4.0.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",

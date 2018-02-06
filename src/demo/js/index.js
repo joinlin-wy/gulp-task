@@ -1,8 +1,8 @@
 var app = new Vue({
     el: '#app',
     data: {
-        text: 'this is the homepage',
-        title: 'i like runing to school'
+        text: 'Do you want to see the components?',
+        title: 'I like this color of background, and you?'
     },
     components: {
         'hello': {

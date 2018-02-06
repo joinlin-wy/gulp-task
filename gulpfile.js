@@ -5,13 +5,12 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     htmlmin = require('gulp-htmlmin'),
     rev = require('gulp-rev'),
-    browserSync = require('browser-sync')
-fs = require('fs'),
+    browserSync = require('browser-sync'),
     del = require('del'),
     template = require('./template'),
     server = require('./server');
 
-const apps = require('./config/apps')
+const apps = require('./config/apps').dirs
 /* 
 开发版
 */
@@ -75,7 +74,7 @@ gulp.task('default', ['watch'], function () {
             baseDir: 'dev'
         },
         open: false,
-        files: ["dev/**/*.css", "dev/**/*.js", "dev/**/*.html"],
+        files: ["dev/**/*.css", "dev/**/js/*.js", "dev/**/*.html"],
         scriptPath: function (path, port, options) {
             if (useVorlon) {
                 return 'http://HOST:' + vorlonPort + '/vorlon.js'

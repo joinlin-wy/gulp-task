@@ -1,8 +1,10 @@
+var a = undefined == null
+console.log(a)
 var app = new Vue({
     el: '#app',
     data: {
-        text: 'this is the homepage',
-        title: 'i like runing to school'
+        text: 'Do you want to see the components?',
+        title: 'I like auto-build develop evironment'
     },
     components: {
         'hello': {
