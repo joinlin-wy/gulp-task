@@ -1,0 +1,1 @@
+(function () {if (typeof $template == 'undefined') {$template = {}};$template['hello'] = '<div>    <p>hello,i come from hello template</p>    <p>do you see me ?</p></div>'}());

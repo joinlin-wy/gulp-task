@@ -1,0 +1,121 @@
+map {
+    "logLevel": "info",
+    "plugins": List[],
+    "port": 3000,
+    "snippetOptions": Map {
+        "async": true,
+        "whitelist": List[],
+        "blacklist": List[],
+        "rule": Map {
+            "match": /<body[^>]*>/i,
+            "fn": function (snippet, match) {
+                return match + snippet;
+            }
+        }
+    },
+    "reloadDebounce": 500,
+    "mode": "server",
+    "server": Map {
+        "baseDir": List[
+            "dev"],
+        "serveStaticOptions": Map {
+            "index": "index.html"
+        }
+    },
+    "logFileChanges": true,
+    "reloadThrottle": 0,
+    "clientEvents": List["scroll", "scroll:element", "input:text", "input:toggles", "form:submit", "form:reset", "click"],
+    "hostnameSuffix": false,
+    "scrollElements": List[],
+    "scheme": "http",
+    "startPath": null,
+    "single": false,
+    "host": null,
+    "codeSync": true,
+    "watchEvents": List["change"],
+    "browser": "default",
+    "notify": true,
+    "open": false,
+    "reloadDelay": 0,
+    "minify": true,
+    "rewriteRules": List[],
+    "injectFileTypes": List["css", "png", "jpg", "jpeg", "svg", "gif", "webp", "map"],
+    "cors": false,
+    "proxy": false,
+    "tagNames": Map {
+        "jpg": "img",
+        "css": "link",
+        "svg": "img",
+        "gif": "img",
+        "jpeg": "img",
+        "js": "script",
+        "png": "img",
+        "scss": "link",
+        "less": "link"
+    },
+    "scrollRestoreTechnique": "window.name",
+    "watch": false,
+    "watchOptions": Map {
+        "ignoreInitial": true,
+        "cwd": "D:\\Workspace\\demo\\gulp-task\\gulp-task",
+        "ignored": List[/node_modules/, /bower_components/, ".sass-cache", ".vscode", ".git", ".idea"]
+    },
+    "cwd": "D:\\Workspace\\demo\\gulp-task\\gulp-task",
+    "scriptPath": function (path, port, options) {
+        console.log(options)
+        return options.getIn(['urls', 'local']) + path;
+    },
+    "logConnections": false,
+    "ghostMode": Map {
+        "clicks": true,
+        "scroll": true,
+        "location": true,
+        "forms": Map {
+            "submit": true,
+            "inputs": true,
+            "toggles": true
+        }
+    },
+    "middleware": List[],
+    "ignore": List[],
+    "injectChanges": true,
+    "excludedFileTypes": List["js", "css", "pdf", "map", "svg", "ico", "woff", "json", "eot", "ttf", "png", "jpg", "jpeg", "webp", "gif", "mp4", "mp3", "3gp", "ogg", "ogv", "webm", "m4a", "flv", "wmv", "avi", "swf", "scss"],
+    "online": true,
+    "socket": Map {
+        "socketIoOptions": Map {
+            "log": false
+        },
+        "socketIoClientConfig": Map {
+            "reconnectionAttempts": 50
+        },
+        "path": "/browser-sync/socket.io",
+        "clientPath": "/browser-sync",
+        "namespace": "/browser-sync",
+        "clients": Map {
+            "heartbeatTimeout": 5000
+        }
+    },
+    "ui": Map {
+        "port": 3001
+    },
+    "logPrefix": "Browsersync",
+    "scrollThrottle": 0,
+    "absolute": "http://HOST:3000/browser-sync/browser-sync-client.js?v=2.23.6",
+    "reloadOnRestart": false,
+    "localOnly": false,
+    "files": Map {
+        "core": Map {
+            "globs": List["dev/**/*.css", "dev/**/*.js", "dev/**/*.html"],
+            ".js",
+            "dev/**/*.html"],
+        "objs": List[]
+    }
+}, "version": "2.23.6", "amps": true, "serveStatic"
+logSnippet ": true, "
+timestamps ": true, "
+serveStatic ": List [], "
+scrotrue, "xip": false
+}
+llElementMapping ": List [], "
+scrollProportionally ": true, "
+xip ": false }
