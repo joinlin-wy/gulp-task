@@ -5,6 +5,7 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     htmlmin = require('gulp-htmlmin'),
     htmlreplace = require('gulp-html-replace'),
+    sass = require('gulp-sass'),
     rev = require('gulp-rev'),
     browserSync = require('browser-sync'),
     del = require('del'),
@@ -37,16 +38,23 @@ app.dirs.forEach((value) => {
     gulp.task(`${value}-js`, ['clean'], function () {
         return gulp.src([
                 `./src/${value}/**/*.js`,
-                `!./src/framework/build/**`
+                `!./src/${value}/build/*.js`
             ])
             .pipe(concat(`${value}.js`))
             .pipe(gulp.dest(`./dev/${value}/js`))
     })
-    gulp.task(`${value}-css`, ['clean'], function () {
+    gulp.task(`${value}-sass`, ['clean'], function () {
+        return gulp.src([`./src/${value}/styles/*.scss`])
+            .pipe(sass().on('error', sass.logError))
+            // .pipe(concat(`${value}.css`))
+            .pipe(gulp.dest(`./src/${value}/styles`))
+    })
+    gulp.task(`${value}-css`, [`${value}-sass`], function () {
         return gulp.src([`./src/${value}/**/*.css`])
             .pipe(concat(`${value}.css`))
             .pipe(gulp.dest(`./dev/${value}/styles`))
     })
+   
     gulp.task(`${value}-html`, ['clean'], function () {
         return gulp.src(`./src/${value}/*.html`)
             .pipe(htmlreplace({
@@ -60,9 +68,8 @@ app.dirs.forEach((value) => {
     gulp.task(`${value}-copy`, ['clean'], function () {
         return gulp.src([
                 `./src/${value}/**`,
-                `!./src/${value}/**/*.{html,js,css}`
+                `!./src/${value}/**/*.{html,js,css,scss}`
             ])
-            // .pipe(htmlmin())
             .pipe(gulp.dest(`./dev/${value}`))
     })
     gulp.task(value, [
@@ -78,6 +85,7 @@ app.dirs.forEach((value) => {
 gulp.task('watch', tasks, function (cb) {
     app.dirs.forEach((value) => {
         gulp.watch(`./src/${value}/js/*.js`, [`${value}-js`]);
+        gulp.watch(`./src/${value}/styles/*.scss`, [`${value}-sass`]);
         gulp.watch(`./src/${value}/styles/*.css`, [`${value}-css`]);
         gulp.watch(`./src/${value}/*.html`, [`${value}-html`]);
         gulp.watch(`./src/${value}/templates/*.html`, [`${value}-template`]);

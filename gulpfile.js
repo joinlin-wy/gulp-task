@@ -57,37 +57,37 @@ gulp.task('framework', ['clean'], function () {
 })
 tasks.push('framework')
 gulp.task('watch', tasks, function (cb) {
-    apps.forEach((value) => {
-        gulp.watch(`./src/${value}/js/*.js`, [`${value}-js`]);
-        gulp.watch(`./src/${value}/styles/*.css`, [`${value}-css`]);
-        gulp.watch(`./src/${value}/*.html`, [`${value}-html`]);
-        gulp.watch(`./src/${value}/templates/*.html`, [`${value}-template`]);
-    })
+    // apps.forEach((value) => {
+    //     gulp.watch(`./src/${value}/js/*.js`, [`${value}-js`]);
+    //     gulp.watch(`./src/${value}/styles/*.css`, [`${value}-css`]);
+    //     gulp.watch(`./src/${value}/*.html`, [`${value}-html`]);
+    //     gulp.watch(`./src/${value}/templates/*.html`, [`${value}-template`]);
+    // })
     isDone = true
     cb()
 });
 let useVorlon = false,
     vorlonPort = 1337
 gulp.task('default', ['watch'], function () {
-    browserSync({
-        server: {
-            baseDir: 'dev'
-        },
-        open: false,
-        files: ["dev/**/*.css", "dev/**/js/*.js", "dev/**/*.html"],
-        scriptPath: function (path, port, options) {
-            if (useVorlon) {
-                return 'http://HOST:' + vorlonPort + '/vorlon.js'
-            } else {
-                return 'http://HOST:' + port + path
-            }
+    // browserSync({
+    //     server: {
+    //         baseDir: 'dev'
+    //     },
+    //     open: false,
+    //     files: ["dev/**/*.css", "dev/**/js/*.js", "dev/**/*.html"],
+    //     scriptPath: function (path, port, options) {
+    //         if (useVorlon) {
+    //             return 'http://HOST:' + vorlonPort + '/vorlon.js'
+    //         } else {
+    //             return 'http://HOST:' + port + path
+    //         }
 
-        }
-        // port: 8080,
-        // ui: {
-        //     port: 8081,
-        // }
-    });
+    //     }
+    //     // port: 8080,
+    //     // ui: {
+    //     //     port: 8081,
+    //     // }
+    // });
 })
 
 // function getIPAddress() {

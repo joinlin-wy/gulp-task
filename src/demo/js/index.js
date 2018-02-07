@@ -6,7 +6,12 @@ var app = new Vue({
     },
     components: {
         'hello': {
-            template:$template['hello']
+            template:$template['hello'],
+            data: function(){
+                return {
+                    ask: 'can you see me?'
+                }
+            }
         }
     },
     created: function () {

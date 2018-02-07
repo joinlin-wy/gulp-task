@@ -1,5 +1,9 @@
-body{
-    background: #0f62c7;
-    color: #ffffff;
-    font-size: 20px;
-}
+body {
+  background: #0f62c7;
+  color: #cfe0d3;
+  font-size: 20px; }
+
+#app {
+  padding: 5px; }
+  #app h3 {
+    color: #c6e610; }

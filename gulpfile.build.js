@@ -5,11 +5,13 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     htmlmin = require('gulp-htmlmin'),
     htmlreplace = require('gulp-html-replace'),
+    sass = require('gulp-sass'),
     rev = require('gulp-rev'),
     browserSync = require('browser-sync'),
     del = require('del'),
     template = require('./template'),
-    server = require('./server');
+    zip = require('gulp-zip'),
+    war = require('gulp-war');
 
 const app = require('./config/apps')
 /* 
@@ -44,7 +46,13 @@ app.dirs.forEach((value) => {
             .pipe(concat(`${value}.min.js`))
             .pipe(gulp.dest(`./build/${value}/js`))
     })
-    gulp.task(`${value}-css`, ['clean'], function () {
+    gulp.task(`${value}-sass`, ['clean'], function () {
+        return gulp.src([`./src/${value}/styles/*.scss`])
+            .pipe(sass().on('error', sass.logError))
+            // .pipe(concat(`${value}.css`))
+            .pipe(gulp.dest(`./src/${value}/styles`))
+    })
+    gulp.task(`${value}-css`, [`${value}-sass`], function () {
         return gulp.src([`./src/${value}/**/*.css`])
             .pipe(minifycss())
             .pipe(concat(`${value}.min.css`))
@@ -52,19 +60,19 @@ app.dirs.forEach((value) => {
     })
     gulp.task(`${value}-html`, ['clean'], function () {
         return gulp.src(`./src/${value}/*.html`)
+            .pipe(htmlmin())
             .pipe(htmlreplace({
                 template: 'js/template.min.js',
                 js: `js/${value}.min.js`,
                 framework: '../framework/js/framework.min.js',
                 css: `styles/${value}.min.css`
             }))
-            .pipe(htmlmin())
             .pipe(gulp.dest(`./build/${value}/`))
     })
     gulp.task(`${value}-copy`, ['clean'], function () {
         return gulp.src([
             `./src/${value}/**`,
-            `!./src/${value}/**/*.{html,js,css}`
+            `!./src/${value}/**/*.{html,js,css,scss}`
         ])
             .pipe(gulp.dest(`./build/${value}`))
     })
@@ -87,5 +95,10 @@ gulp.task('default', tasks, function () {
             },
             open: false
         });
+    }
+    if(app.build.compressWar){
+        return gulp.src(['./build/**','!./build/*.war'])
+        .pipe(zip(`${app.name}.war`))
+        .pipe(gulp.dest('./build'))
     }
 })

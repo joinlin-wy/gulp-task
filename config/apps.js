@@ -1,4 +1,5 @@
 module.exports = {
+    name: 'app',
     dirs: [
         'framework','demo'
     ],
@@ -8,6 +9,7 @@ module.exports = {
         serverOpen: true
     },
     build:{
-        serverOpen: true
+        serverOpen: true,
+        compressWar: true,
     }
 }
